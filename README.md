@@ -132,6 +132,7 @@ The included JavaScript does not depend on any frameworks or libraries, and list
 
 **unreleased**
 
+* Support future relative times (maintaining misnomer `local_time_ago`)
 * Set default type for `local_relative_time`
 
 **1.0.0** (April 12, 2014)

@@ -99,8 +99,8 @@ class RelativeTime
 
   toString: ->
     # Today: "Saved 5 hours ago"
-    if ago = @timeElapsed()
-      "#{ago} ago"
+    if recent = @timeElapsed()
+      recent
 
     # Yesterday: "Saved yesterday at 8:15am"
     # This week: "Saved Thursday at 8:15am"
@@ -118,25 +118,30 @@ class RelativeTime
       @formatDate()
 
   timeElapsed: ->
-    ms  = new Date().getTime() - @date.getTime()
+    d   = new Date().getTime()
+    ms  = Math.abs   d - @date.getTime()
     sec = Math.round ms  / 1000
     min = Math.round sec / 60
     hr  = Math.round min / 60
+    prefix = ""
+    suffix = ""
+    if d >= @date.getTime()
+      suffix = " ago"
+    else
+      prefix = "in "
 
-    if ms < 0
-      null
-    else if sec < 10
-      "a second"
+    if sec < 10
+      "#{prefix}a second#{suffix}"
     else if sec < 45
-      "#{sec} seconds"
+      "#{prefix}#{sec} seconds#{suffix}"
     else if sec < 90
-      "a minute"
+      "#{prefix}a minute#{suffix}"
     else if min < 45
-      "#{min} minutes"
+      "#{prefix}#{min} minutes#{suffix}"
     else if min < 90
-      "an hour"
+      "#{prefix}an hour#{suffix}"
     else if hr < 24
-      "#{hr} hours"
+      "#{prefix}#{hr} hours#{suffix}"
     else
       null
 
@@ -145,6 +150,8 @@ class RelativeTime
 
     if daysPassed > 6
       null
+    else if daysPassed is -1
+      "tomorrow"
     else if daysPassed is 0
       "today"
     else if daysPassed is 1

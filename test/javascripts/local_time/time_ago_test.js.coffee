@@ -18,9 +18,31 @@ test "an hour ago", ->
 test "hours ago", ->
   assertTimeAgo "23 hours ago", "hours", 23
 
+test "in a second", ->
+  assertTimeAgo "in a second", "seconds", -6
+
+test "in seconds", ->
+  assertTimeAgo "in 30 seconds", "seconds", -30
+
+test "in a minute", ->
+  assertTimeAgo "in a minute", "seconds", -45
+
+test "in a few minutes", ->
+  assertTimeAgo "in 5 minutes", "minutes", -5
+
+test "in an hour", ->
+  assertTimeAgo "in an hour", "minutes", -89
+
+test "in some hours", ->
+  assertTimeAgo "in 20 hours", "hours", -20
+
 test "yesterday", ->
   time = moment().subtract("days", 1).format "h:mma"
   assertTimeAgo "yesterday at #{time}", "days", 1
+
+test "tomorrow", ->
+  time = moment().add("days", 1).format "h:mma"
+  assertTimeAgo "tomorrow at #{time}", "days", -1
 
 test "last week", ->
   ago  = moment().subtract "days", 5
