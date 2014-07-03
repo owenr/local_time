@@ -131,7 +131,7 @@ class LocalTimeHelperTest < TestCase
     assert_equal expected, local_time_ago(@time, class: "date-time")
   end
 
-  def test_relative_time
+  def test_relative_time_with_implicit_type
     expected = %Q(<time data-local="time-or-date" datetime="#{@time_js}">November 21, 2013  6:00am</time>)
     assert_equal expected, local_relative_time(@time, type: "time-or-date")
   end

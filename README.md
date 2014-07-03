@@ -82,9 +82,9 @@ Displays the relative amount of time passed using preset time and date formats t
 
 **Available `:type` options**
 
-* `time-ago` (default) With age, the descriptions transition from {quantity of seconds, minutes, or hours} to {date + time} to {date}.
+* `time-or-date` (default) Displays the time if it occurs today or the date if not. "3:26pm" or "Apr 11"
+* `time-ago` With age, the descriptions transition from {quantity of seconds, minutes, or hours} to {date + time} to {date}. Aliased as `local_time_ago`.
 * `date` Short date-only format. Includes the year unless `time` is within the current year. "Apr 11" or "Apr 11, 2013"
-* `time-or-date` Displays the time if it occurs today or the date if not. "3:26pm" or "Apr 11"
 * `weekday` Displays "Today", "Yesterday", or the weekday (e.g. "Wednesday") if the time is within a week of today.
 
 The `<time>` elements are updated every 60 seconds.
@@ -129,6 +129,10 @@ The included JavaScript does not depend on any frameworks or libraries, and list
 ```
 
 #### Version History
+
+**unreleased**
+
+* Set default type for `local_relative_time`
 
 **1.0.0** (April 12, 2014)
 

@@ -23,6 +23,7 @@ module LocalTimeHelper
     time = utc_time(time)
     options, type = extract_options_and_value(options, :type)
 
+    type ||= 'time-or-date'
     options[:data] ||= {}
     options[:data].merge! local: type
 
