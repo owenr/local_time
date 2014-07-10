@@ -51,6 +51,20 @@ test "last week", ->
 
   assertTimeAgo "#{day} at #{time}", "days", 5
 
+test "this week", ->
+  ago  = moment().subtract "days", -5
+  day  = ago.format "dddd"
+  time = ago.format "h:mma"
+
+  assertTimeAgo "this #{day} at #{time}", "days", -5
+
+test "next week", ->
+  ago  = moment().subtract "days", -10
+  day  = ago.format "dddd"
+  time = ago.format "h:mma"
+
+  assertTimeAgo "next #{day} at #{time}", "days", -10
+
 test "this year", ->
   clock = sinon.useFakeTimers(new Date(2013,11,11,11,11).getTime(), "Date")
   date = moment().subtract("days", 7).format "MMM D"

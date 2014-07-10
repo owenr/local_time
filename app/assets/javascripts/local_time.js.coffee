@@ -150,12 +150,18 @@ class RelativeTime
 
     if daysPassed > 6
       null
+    else if daysPassed < -13
+      null
     else if daysPassed is -1
       "tomorrow"
     else if daysPassed is 0
       "today"
     else if daysPassed is 1
       "yesterday"
+    else if daysPassed < -6
+      strftime @date, "next %A"
+    else if daysPassed < 0
+      strftime @date, "this %A"
     else
       strftime @date, "%A"
 
